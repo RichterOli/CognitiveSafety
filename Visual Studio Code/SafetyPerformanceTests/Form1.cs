@@ -15,8 +15,6 @@ namespace SafetyPerformanceTests
         public Form1()
         {
             InitializeComponent();
-
-            _showCameraPicture();
         }
 
         private void _showCameraPicture()
