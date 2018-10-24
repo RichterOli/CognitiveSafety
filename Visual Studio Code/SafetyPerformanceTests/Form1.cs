@@ -19,9 +19,7 @@ namespace SafetyPerformanceTests
 
         private void _showCameraPicture()
         {
-            int i = 0;
-            if (i == 0)
-                return;
+            
         }
     }
 }
