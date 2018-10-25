@@ -20,3 +20,4 @@ C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.csproj.CopyComplete
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.exe
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.pdb
+C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\cvextern.dll
