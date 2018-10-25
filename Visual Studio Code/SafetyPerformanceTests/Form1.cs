@@ -23,8 +23,6 @@ namespace SafetyPerformanceTests
         Int32 __intS32Width;
         Int32 __int__intS32Height;
 
-        Image<Bgr, Byte> __ImgCurrentFrame = null;
-        private bool __boolBLive;
         private string __selectedDevice = "UI164xLE - C_4002747307";
 
         public Form1()
@@ -74,10 +72,6 @@ namespace SafetyPerformanceTests
             {
                 label1.Text = "Start Live Video failed";
             }
-            else
-            {
-                __boolBLive = true;
-            }
 
 
             // Get last image memory
@@ -103,7 +97,6 @@ namespace SafetyPerformanceTests
                 // Open Camera and Start Live Video
                 if (__uEyeCamera.Acquisition.Capture() == uEye.Defines.Status.Success)
                 {
-                    __boolBLive = true;
                 }
             }
         }
@@ -120,14 +113,7 @@ namespace SafetyPerformanceTests
             statusRet = __uEyeCamera.Memory.GetSize(__intS32LastMemId, out __intS32Width, out __int__intS32Height);
 
 
-            statusRet = __uEyeCamera.Memory.ToBitmap(__intS32LastMemId, out __bmpMyBitmap);
-
-            // clone bitmap
-            Rectangle cloneRect = new Rectangle(0, 0, __intS32Width, __int__intS32Height);
-            System.Drawing.Imaging.PixelFormat format = System.Drawing.Imaging.PixelFormat.Format32bppArgb;
-
-            //__ImgCurrentFrame = new Image<Bgr, Byte>(__bmpMyBitmap.Clone(cloneRect, format));
-
+            statusRet = __uEyeCamera.Memory.ToBitmap(__intS32LastMemId, out __bmpMyBitmap); 
 
             // unlock image buffer
             statusRet = __uEyeCamera.Memory.Unlock(__intS32LastMemId);
