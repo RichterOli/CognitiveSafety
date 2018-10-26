@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
+using CognitiveSafety.Communicate;
+
 using uEye;
 using Emgu.CV;
 using Emgu.CV.Structure;
@@ -25,6 +27,7 @@ namespace SafetyPerformanceTests
 
         private bool filtering = false;
         private Filter filterClass = new Filter();
+        private RobotsCommands __robotCommands;
 
         private string __selectedDevice = "UI164xLE - C_4002747307";
 
