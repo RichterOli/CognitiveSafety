@@ -48,3 +48,4 @@ C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformance
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.xml
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.SimpleChildWindow.pdb
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.SimpleChildWindow.xml
+C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.Form2.resources
