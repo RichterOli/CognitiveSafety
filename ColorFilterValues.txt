@@ -1,0 +1,4 @@
+	Min		Max
+Red:	60		110
+Green:	60		100
+Blue:	60		70
