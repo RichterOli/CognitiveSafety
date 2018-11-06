@@ -287,5 +287,12 @@ namespace SafetyPerformanceTests
             histogramBox2.Refresh();
             histogramBox3.Refresh();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form frm = new Form2();
+            // abhängig von Form1
+            frm.Show(this);
+        }
     }
 }

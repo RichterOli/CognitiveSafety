@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.filter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.buttonTakePicture = new System.Windows.Forms.Button();
             this.buttonHistogramm = new System.Windows.Forms.Button();
             this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
@@ -54,6 +55,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgbOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgbProcessed)).BeginInit();
             this.gbColorFilterVal.SuspendLayout();
+=======
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.livePicture)).BeginInit();
+>>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
             this.SuspendLayout();
             // 
             // filter
@@ -72,7 +77,11 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(223, 16);
             this.label1.Name = "label1";
+<<<<<<< HEAD
             this.label1.Size = new System.Drawing.Size(75, 18);
+=======
+            this.label1.Size = new System.Drawing.Size(0, 20);
+>>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
             this.label1.TabIndex = 3;
             this.label1.Text = "Live Video";
             // 
@@ -262,8 +271,19 @@
             this.gbColorFilterVal.TabStop = false;
             this.gbColorFilterVal.Text = "Color Filter Values";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1235, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 24);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Motion Detection";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1520, 825);
             this.Controls.Add(this.gbColorFilterVal);
             this.Controls.Add(this.tbPosition);
@@ -274,6 +294,11 @@
             this.Controls.Add(this.histogramBox1);
             this.Controls.Add(this.buttonHistogramm);
             this.Controls.Add(this.buttonTakePicture);
+=======
+            this.ClientSize = new System.Drawing.Size(1468, 712);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+>>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
             this.Controls.Add(this.filter);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -292,6 +317,7 @@
         #endregion
         private System.Windows.Forms.Button filter;
         private System.Windows.Forms.Label label1;
+<<<<<<< HEAD
         private System.Windows.Forms.Button buttonTakePicture;
         private System.Windows.Forms.Button buttonHistogramm;
         private Emgu.CV.UI.HistogramBox histogramBox1;
@@ -312,6 +338,9 @@
         private System.Windows.Forms.Label lbMin;
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.GroupBox gbColorFilterVal;
+=======
+        private System.Windows.Forms.Button button1;
+>>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
     }
 }
 
