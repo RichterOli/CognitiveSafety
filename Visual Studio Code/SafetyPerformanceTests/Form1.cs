@@ -56,7 +56,7 @@ namespace SafetyPerformanceTests
             else
             {
                 // make Position TextBox visible
-                tbPosition.Visible = true;
+                tbArea.Visible = true;
 
                 // make histogram boxes invisible
                 histogramBox1.Visible = false;
@@ -223,8 +223,11 @@ namespace SafetyPerformanceTests
                 // catch cross threading exception, when form is closed
                 try
                 {
+                    double biggestArea;
                     // show the processed image in the form
-                    imgbProcessed.Image = __filterClass.filterColor(bmpMyBitmap, ref colorVals); //display it in pictureBox
+                    imgbProcessed.Image = __filterClass.detectHand(__imgCurrentFrame, out biggestArea);
+
+                    tbArea.Text = biggestArea.ToString() + '\n';
                 }
                 catch(Exception exception)
                 {
@@ -247,7 +250,7 @@ namespace SafetyPerformanceTests
         private void buttonHistogramm_Click(object sender, EventArgs e)
         {
             // make Position Textbox invisible
-            tbPosition.Visible = false;
+            tbArea.Visible = false;
 
             // make histogram boxes invisible
             histogramBox1.Visible = true;

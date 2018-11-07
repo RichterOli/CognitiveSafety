@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.filter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
             this.buttonTakePicture = new System.Windows.Forms.Button();
             this.buttonHistogramm = new System.Windows.Forms.Button();
             this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
@@ -39,7 +38,7 @@
             this.histogramBox3 = new Emgu.CV.UI.HistogramBox();
             this.imgbOriginal = new Emgu.CV.UI.ImageBox();
             this.imgbProcessed = new Emgu.CV.UI.ImageBox();
-            this.tbPosition = new System.Windows.Forms.TextBox();
+            this.tbArea = new System.Windows.Forms.TextBox();
             this.tbRedMin = new System.Windows.Forms.TextBox();
             this.tbRedMax = new System.Windows.Forms.TextBox();
             this.tbGreenMax = new System.Windows.Forms.TextBox();
@@ -52,13 +51,10 @@
             this.lbMin = new System.Windows.Forms.Label();
             this.lbMax = new System.Windows.Forms.Label();
             this.gbColorFilterVal = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgbOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgbProcessed)).BeginInit();
             this.gbColorFilterVal.SuspendLayout();
-=======
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.livePicture)).BeginInit();
->>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
             this.SuspendLayout();
             // 
             // filter
@@ -77,11 +73,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(223, 16);
             this.label1.Name = "label1";
-<<<<<<< HEAD
-            this.label1.Size = new System.Drawing.Size(75, 18);
-=======
-            this.label1.Size = new System.Drawing.Size(0, 20);
->>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
+            this.label1.Size = new System.Drawing.Size(193, 42);
             this.label1.TabIndex = 3;
             this.label1.Text = "Live Video";
             // 
@@ -147,57 +139,57 @@
             this.imgbProcessed.TabIndex = 2;
             this.imgbProcessed.TabStop = false;
             // 
-            // tbPosition
+            // tbArea
             // 
-            this.tbPosition.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPosition.Location = new System.Drawing.Point(418, 475);
-            this.tbPosition.Multiline = true;
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
-            this.tbPosition.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbPosition.Size = new System.Drawing.Size(673, 291);
-            this.tbPosition.TabIndex = 10;
+            this.tbArea.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbArea.Location = new System.Drawing.Point(418, 475);
+            this.tbArea.Multiline = true;
+            this.tbArea.Name = "tbArea";
+            this.tbArea.ReadOnly = true;
+            this.tbArea.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbArea.Size = new System.Drawing.Size(673, 291);
+            this.tbArea.TabIndex = 10;
             // 
             // tbRedMin
             // 
             this.tbRedMin.Location = new System.Drawing.Point(68, 49);
             this.tbRedMin.Name = "tbRedMin";
-            this.tbRedMin.Size = new System.Drawing.Size(55, 22);
+            this.tbRedMin.Size = new System.Drawing.Size(55, 44);
             this.tbRedMin.TabIndex = 11;
             // 
             // tbRedMax
             // 
             this.tbRedMax.Location = new System.Drawing.Point(171, 49);
             this.tbRedMax.Name = "tbRedMax";
-            this.tbRedMax.Size = new System.Drawing.Size(55, 22);
+            this.tbRedMax.Size = new System.Drawing.Size(55, 44);
             this.tbRedMax.TabIndex = 12;
             // 
             // tbGreenMax
             // 
             this.tbGreenMax.Location = new System.Drawing.Point(171, 107);
             this.tbGreenMax.Name = "tbGreenMax";
-            this.tbGreenMax.Size = new System.Drawing.Size(55, 22);
+            this.tbGreenMax.Size = new System.Drawing.Size(55, 44);
             this.tbGreenMax.TabIndex = 14;
             // 
             // tbGreenMin
             // 
             this.tbGreenMin.Location = new System.Drawing.Point(68, 107);
             this.tbGreenMin.Name = "tbGreenMin";
-            this.tbGreenMin.Size = new System.Drawing.Size(55, 22);
+            this.tbGreenMin.Size = new System.Drawing.Size(55, 44);
             this.tbGreenMin.TabIndex = 13;
             // 
             // tbBlueMin
             // 
             this.tbBlueMin.Location = new System.Drawing.Point(68, 169);
             this.tbBlueMin.Name = "tbBlueMin";
-            this.tbBlueMin.Size = new System.Drawing.Size(55, 22);
+            this.tbBlueMin.Size = new System.Drawing.Size(55, 44);
             this.tbBlueMin.TabIndex = 15;
             // 
             // tbBlueMax
             // 
             this.tbBlueMax.Location = new System.Drawing.Point(171, 169);
             this.tbBlueMax.Name = "tbBlueMax";
-            this.tbBlueMax.Size = new System.Drawing.Size(55, 22);
+            this.tbBlueMax.Size = new System.Drawing.Size(55, 44);
             this.tbBlueMax.TabIndex = 16;
             // 
             // lbRed
@@ -206,7 +198,7 @@
             this.lbRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRed.Location = new System.Drawing.Point(17, 51);
             this.lbRed.Name = "lbRed";
-            this.lbRed.Size = new System.Drawing.Size(37, 16);
+            this.lbRed.Size = new System.Drawing.Size(86, 38);
             this.lbRed.TabIndex = 17;
             this.lbRed.Text = "Red:";
             // 
@@ -216,7 +208,7 @@
             this.lbGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbGreen.Location = new System.Drawing.Point(17, 109);
             this.lbGreen.Name = "lbGreen";
-            this.lbGreen.Size = new System.Drawing.Size(48, 16);
+            this.lbGreen.Size = new System.Drawing.Size(117, 38);
             this.lbGreen.TabIndex = 18;
             this.lbGreen.Text = "Green:";
             // 
@@ -226,7 +218,7 @@
             this.lbBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBlue.Location = new System.Drawing.Point(19, 170);
             this.lbBlue.Name = "lbBlue";
-            this.lbBlue.Size = new System.Drawing.Size(38, 16);
+            this.lbBlue.Size = new System.Drawing.Size(91, 38);
             this.lbBlue.TabIndex = 19;
             this.lbBlue.Text = "Blue:";
             // 
@@ -236,7 +228,7 @@
             this.lbMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMin.Location = new System.Drawing.Point(80, 30);
             this.lbMin.Name = "lbMin";
-            this.lbMin.Size = new System.Drawing.Size(29, 16);
+            this.lbMin.Size = new System.Drawing.Size(69, 38);
             this.lbMin.TabIndex = 20;
             this.lbMin.Text = "Min";
             // 
@@ -246,7 +238,7 @@
             this.lbMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMax.Location = new System.Drawing.Point(183, 30);
             this.lbMax.Name = "lbMax";
-            this.lbMax.Size = new System.Drawing.Size(33, 16);
+            this.lbMax.Size = new System.Drawing.Size(79, 38);
             this.lbMax.TabIndex = 21;
             this.lbMax.Text = "Max";
             // 
@@ -283,10 +275,9 @@
             // 
             // Form1
             // 
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(1520, 825);
+            this.ClientSize = new System.Drawing.Size(1468, 712);
             this.Controls.Add(this.gbColorFilterVal);
-            this.Controls.Add(this.tbPosition);
+            this.Controls.Add(this.tbArea);
             this.Controls.Add(this.imgbProcessed);
             this.Controls.Add(this.imgbOriginal);
             this.Controls.Add(this.histogramBox3);
@@ -294,11 +285,7 @@
             this.Controls.Add(this.histogramBox1);
             this.Controls.Add(this.buttonHistogramm);
             this.Controls.Add(this.buttonTakePicture);
-=======
-            this.ClientSize = new System.Drawing.Size(1468, 712);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
->>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
             this.Controls.Add(this.filter);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -317,7 +304,6 @@
         #endregion
         private System.Windows.Forms.Button filter;
         private System.Windows.Forms.Label label1;
-<<<<<<< HEAD
         private System.Windows.Forms.Button buttonTakePicture;
         private System.Windows.Forms.Button buttonHistogramm;
         private Emgu.CV.UI.HistogramBox histogramBox1;
@@ -325,7 +311,7 @@
         private Emgu.CV.UI.HistogramBox histogramBox3;
         private Emgu.CV.UI.ImageBox imgbOriginal;
         private Emgu.CV.UI.ImageBox imgbProcessed;
-        private System.Windows.Forms.TextBox tbPosition;
+        private System.Windows.Forms.TextBox tbArea;
         private System.Windows.Forms.TextBox tbRedMin;
         private System.Windows.Forms.TextBox tbRedMax;
         private System.Windows.Forms.TextBox tbGreenMax;
@@ -338,9 +324,7 @@
         private System.Windows.Forms.Label lbMin;
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.GroupBox gbColorFilterVal;
-=======
         private System.Windows.Forms.Button button1;
->>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
     }
 }
 

@@ -113,14 +113,14 @@ namespace SafetyPerformanceTests
                     if (motionPixelCount < area * 0.05) continue;
 
                     //Draw each individual motion in red
-                    DrawMotion(motionImage, comp, angle, new Bgr(Color.Red));
+                    DrawMotion(motionImage, comp, angle, new Bgr(System.Drawing.Color.Red));
                 }
 
                 // find and draw the overall motion angle
                 double overallAngle, overallMotionPixelCount;
 
                 _motionHistory.MotionInfo(_forgroundMask, new Rectangle(Point.Empty, motionMask.Size), out overallAngle, out overallMotionPixelCount);
-                DrawMotion(motionImage, new Rectangle(Point.Empty, motionMask.Size), overallAngle, new Bgr(Color.Green));
+                DrawMotion(motionImage, new Rectangle(Point.Empty, motionMask.Size), overallAngle, new Bgr(System.Drawing.Color.Green));
 
                 //if (this.Disposing || this.IsDisposed)
                   //  return;

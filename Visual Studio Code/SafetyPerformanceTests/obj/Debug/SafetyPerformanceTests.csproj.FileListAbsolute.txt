@@ -48,13 +48,11 @@ C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformance
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.xml
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.SimpleChildWindow.pdb
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.SimpleChildWindow.xml
-<<<<<<< HEAD
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\ControlzEx.dll
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.dll
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\ControlzEx.pdb
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.pdb
 C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\bin\Debug\MahApps.Metro.xml
-=======
 C:\Users\weissertde\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.Form2.resources
->>>>>>> bc014bffcfb4543b821ed24e2292e62c10d60f14
+C:\Users\olive\Desktop\CognitiveSafety\Visual Studio Code\SafetyPerformanceTests\obj\Debug\SafetyPerformanceTests.Form2.resources

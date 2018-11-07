@@ -47,6 +47,109 @@ namespace SafetyPerformanceTests
             return binImg;
         }
 
+        public Image<Bgr, byte> detectHand(Image<Bgr, byte> currentFrameImg, out double biggestArea)
+        {
+            Image<Gray, byte> grayImgWithHand;
+
+            // filter the image in terms of color and improve countour boundaries
+            grayImgWithHand = filterForHand(currentFrameImg);
+
+            Image<Bgr, byte> imgWithHandAndHull;
+
+            // find a contour which represents a hand and draw a hull
+            imgWithHandAndHull = extractContourAndHull(grayImgWithHand, currentFrameImg, out biggestArea);
+
+            return imgWithHandAndHull;
+        }
+
+        /// <summary>
+        /// Filters the given image by color and improves the boundaries of the remaining contours.
+        /// Color space conversion Rgb <-> YCrCb: https://docs.opencv.org/3.4.3/de/d25/imgproc_color_conversions.html
+        /// image eroding: https://homepages.inf.ed.ac.uk/rbf/HIPR2/erode.htm (auch bei Jaehne und Bernd)
+        /// </summary>
+        /// <param name="img">The image which should be progressed.</param>
+        /// <returns>Gray Image which can contain a hand.</returns>
+        private Image<Gray, byte> filterForHand(Image<Bgr, byte> img)
+        {
+            // convert color space from BGR to YCrCb
+            Image<Ycc, Byte> currentYCrCbFrame = img.Convert<Ycc, Byte>();
+
+            // create gray image with the same size as image
+            Image<Gray, byte> grayImg = new Image<Gray, byte>(img.Width, img.Height);
+
+            // perform color filtering
+            grayImg = currentYCrCbFrame.InRange(new Ycc(0, 131, 80), new Ycc(255, 185, 135));
+
+            // create a kernel for the image erosion
+            Mat rect_12 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(12, 12), new Point(6, 6));
+            CvInvoke.Erode(grayImg, grayImg, rect_12, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0, 255, 0));
+
+            // create a kernel for the image dilation
+            Mat rect_6 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(6, 6), new Point(3, 3));
+            CvInvoke.Dilate(grayImg, grayImg, rect_6, new Point(-1, -1), 2, BorderType.Default, new MCvScalar(0, 255, 0));
+
+            return grayImg;
+        }
+
+        private Image<Bgr, byte> extractContourAndHull(Image<Gray, byte> grayImg, Image<Bgr, byte> currentFrameImg, out double biggestArea)
+        {
+            // create variable where found contours can be stored
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+
+            // convert Gray-Image to UMat
+            UMat grayMat = grayImg.ToUMat();
+
+            // search for contours in the Gray-Image
+            CvInvoke.FindContours(grayMat, contours, null, RetrType.List, ChainApproxMethod.ChainApproxSimple);
+
+            # region Find biggest contour
+            VectorOfPoint biggestContour = null;
+
+            biggestArea = 0;
+            double contourArea = 0;
+            
+            for(int contourNumber = 0; contourNumber < contours.Size; contourNumber++)
+            {
+                contourArea = CvInvoke.ContourArea(contours[contourNumber], false);
+                if (contourArea > biggestArea)
+                {
+                    biggestArea = contourArea;
+                    biggestContour = contours[contourNumber];
+                }
+            }
+            # endregion
+
+            if (biggestContour != null)
+            {
+                VectorOfPoint currentContour = new VectorOfPoint();
+
+                CvInvoke.ApproxPolyDP(biggestContour, currentContour, CvInvoke.ArcLength(biggestContour, true) * 0.0025, true);
+
+                Point[] currentContourPoints = currentContour.ToArray();
+
+                currentFrameImg.Draw(currentContourPoints, new Bgr(System.Drawing.Color.LimeGreen), 2);
+
+                PointF[] hullPoints = CvInvoke.ConvexHull(Array.ConvertAll<Point, PointF>(currentContourPoints, new Converter<Point, PointF>(PointToPointF)), true);
+
+                RotatedRect rotatedRect = CvInvoke.MinAreaRect(currentContour);
+
+                PointF[] pointFs = rotatedRect.GetVertices();
+
+                Point[] points = new Point[pointFs.Length];
+
+                for (int i = 0; i < pointFs.Length; i++)
+                    points[i] = new Point((int)pointFs[i].X, (int)pointFs[i].Y);
+
+                currentFrameImg.DrawPolyline(Array.ConvertAll<PointF, Point>(hullPoints, Point.Round),
+                    true, new Bgr(200, 125, 75), 2);
+
+                currentFrameImg.Draw(new CircleF(new PointF(rotatedRect.Center.X, rotatedRect.Center.Y), 3),
+                    new Bgr(200, 125, 75), 2);
+            }
+
+            return currentFrameImg;
+        }
+
         /// <summary>
         /// Converts a Point structure to a PointF structure
         /// </summary>
@@ -98,92 +201,9 @@ namespace SafetyPerformanceTests
                 // declare a vector for contour storing
                 VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
 
-                # region find triangles, rectangles and polygons
+                # region find contures
                 // find a sequence of contours using the simple approximation method
                 CvInvoke.FindContours(cannyEdges, contours, null, RetrType.List, ChainApproxMethod.ChainApproxSimple);
-
-                /* declare lists for triangles, rectangles and polygons
-                List<Triangle2DF> listTriangles = new List<Triangle2DF>();
-                List<RotatedRect> listRectangles = new List<RotatedRect>();
-                VectorOfVectorOfPoint listPolygons = new VectorOfVectorOfPoint();
-
-                // iterate through the contour vector
-                for (int i = 0; i < contours.Size; i++)
-                {
-                    using (VectorOfPoint contour = new VectorOfPoint())
-                    {
-                        // approximate one or more curves and return the approximation results
-                        CvInvoke.ApproxPolyDP(contours[i], contour, CvInvoke.ArcLength(contours[i], true) * 0.05, true);
-
-                        // ensure that the area of the contour is greater than 250.0
-                        if(CvInvoke.ContourArea(contour, false) > 250.0)
-                        {
-                            // get the number of array elements of the contour
-                            int arrayElements = contour.Size;
-
-                            // check if contour is a triangle
-                            if (3 == arrayElements)
-                            {
-                                // get contour points
-                                Point[] points = contour.ToArray();
-
-                                // add to triangle list
-                                listTriangles.Add(new Triangle2DF(points[0], points[1], points[2]));
-                            }
-                            // check if contour is a rectangle or polygon
-                            else if(arrayElements >= 4 && arrayElements <= 6)
-                            {
-                                // get contour points
-                                Point[] points = contour.ToArray();
-
-                                // suppose that contour is a rectangle
-                                bool isRectangle = true;
-
-                                // check if contour has 4 points meaning it could be an rectangle
-                                if (4 == arrayElements)
-                                {
-                                    # region determine if all angles in the contour are within [80, 100] degree
-                                    // get edges between points
-                                    LineSegment2D[] edges = PointCollection.PolyLine(points, true);
-
-                                    // step through edges
-                                    for (int x = 0; x < edges.Length; x++)
-                                    {
-                                        double angle = Math.Abs(edges[(x + 1) % edges.Length].GetExteriorAngleDegree(edges[x]));
-
-                                        // if angle between edges is not about 90 degrees
-                                        if (angle < 80.0 || angle > 100.0)
-                                        {
-                                            // contour is not a rectangle
-                                            isRectangle = false;
-                                            break;
-                                        }
-                                    }
-                                    # endregion
-                                }
-                                else
-                                    // contour is not a rectangle
-                                    isRectangle = false;
-
-                                if (true == isRectangle)
-                                    listRectangles.Add(CvInvoke.MinAreaRect(contour));
-                                else
-                                    listPolygons.Push(contour);
-                            }
-                        }
-                    }
-                }
-                #endregion
-
-                # region draw found contours
-                foreach (Triangle2DF triangle in listTriangles)
-                    imgTrisRecsPolys.Draw(triangle, new Bgr(System.Drawing.Color.Yellow), 2);
-
-                foreach (RotatedRect rectangle in listRectangles)
-                    imgTrisRecsPolys.Draw(rectangle, new Bgr(System.Drawing.Color.Blue), 2);
-
-                
-                CvInvoke.DrawContours(imgTrisRecsPolys, listPolygons, -1, new MCvScalar(0, 0, 255));*/
                 # endregion
 
                 Point[][] arrayOfArrayOfPts = contours.ToArrayOfArray();
